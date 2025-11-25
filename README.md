@@ -1,5 +1,9 @@
 <h1 align="center"><strong>PrimatePostOpGuard™</strong></h1>
-<h3 align="center">Synthetic Data & 15-Day Time-Series for Post-Surgical Complication Prediction in NHPs (Notebook)</h3>
+<h3 align="center">
+<a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/PrimatePostOpGuard.ipynb">Notebook</a> |
+<a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/data/BiologicallyPlausible/preview_PrimatePostOpGuard_Summary_dataset.ipynb">Synthetic Data</a> & 
+<a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/data/BiologicallyPlausible/preview_PrimatePostOpGuard_TimeSeries.ipynb">15-Day Time-Series</a> for Post-Surgical Complication Prediction in NHPs
+</h3>
 
 ---
 

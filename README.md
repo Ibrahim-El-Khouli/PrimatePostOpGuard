@@ -2,7 +2,7 @@
 <h3 align="center">
 <a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/PrimatePostOpGuard.ipynb">Notebook</a> |
 <a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/data/BiologicallyPlausible/preview_PrimatePostOpGuard_Summary_dataset.ipynb">Synthetic Data</a> & 
-<a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/data/BiologicallyPlausible/preview_PrimatePostOpGuard_TimeSeries.ipynb">15-Day Time-Series</a> for Post-Surgical Complication Prediction in NHPs
+<a href="https://github.com/Ibrahim-El-Khouli/PrimatePostOpGuard/blob/main/data/BiologicallyPlausible/preview_PrimatePostOpGuard_TimeSeries.ipynb">15-Day Time-Series</a> for Post-Surgical Complication Prediction in Non-human primates (NHPs)
 </h3>
 
 ---

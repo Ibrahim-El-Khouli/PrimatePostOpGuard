@@ -152,7 +152,10 @@ It enables **predictive modeling**, **risk stratification**, and **hypothesis ge
 | **Procedure Type**      | Orthopedic, Abdominal, Cardiothoracic, Neurosurgery    |
 | **Surgery Complexity**  | 3–6 ordinal scale (technical demand & invasiveness)    |
 | **Duration (min)**      | 120–170 (procedure-dependent normal distribution)      |
+<<<<<<< HEAD
 | **Anesthesia Protocol** | Multi-drug regimens modulating physiological responses |
+=======
+>>>>>>> 4d36b77dab3b1a808453f7f29e7f6746122b7329
 
 **3️⃣ Veterinarian Expertise**
 
@@ -890,4 +893,8 @@ All images are used with proper attribution for educational, illustrative, and n
 
 ## License
 
+<<<<<<< HEAD
 **PrimatePostOpGuard™** is released under the **MIT License** — free for academic, research, and non-commercial use.
+=======
+**PrimatePostOpGuard™** is released under the **MIT License** — free for academic, research, and non-commercial use.
+>>>>>>> 4d36b77dab3b1a808453f7f29e7f6746122b7329

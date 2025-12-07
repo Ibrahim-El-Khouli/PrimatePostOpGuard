@@ -152,7 +152,6 @@ It enables **predictive modeling**, **risk stratification**, and **hypothesis ge
 | **Procedure Type**      | Orthopedic, Abdominal, Cardiothoracic, Neurosurgery    |
 | **Surgery Complexity**  | 3–6 ordinal scale (technical demand & invasiveness)    |
 | **Duration (min)**      | 120–170 (procedure-dependent normal distribution)      |
-| **Anesthesia Protocol** | Multi-drug regimens modulating physiological responses |
 
 **3️⃣ Veterinarian Expertise**
 

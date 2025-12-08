@@ -114,109 +114,159 @@
 
 ---
 
-## Phase 3 — Synthetic Dataset Design & Exploratory Analysis
+# Phase 3.1 — Synthetic Dataset Design 
 
-### Phase 3.1 — Synthetic Dataset Design
-This phase builds a **mechanistically grounded, high-fidelity synthetic dataset** to simulate **post-operative recovery trajectories** in non-human primates (NHPs).  
-It enables **predictive modeling**, **risk stratification**, and **hypothesis generation**, while **minimizing animal use** and maintaining **3Rs compliance**.
+## 🔹 Overview
 
-#### 🔹 Overview
-- **Species:** *Macaca mulatta*, *Macaca fascicularis*, *Callithrix jacchus*  
-- **Purpose:** Model individualized recovery patterns, evaluate risk, and refine post-surgical veterinary strategies  
+This phase establishes a **high-fidelity, mechanistically grounded synthetic dataset** to simulate **post-operative recovery trajectories** in non-human primates (NHPs):
+
+- **Species:** 50% *Macaca mulatta*, 40% *Macaca fascicularis*, 10% *Callithrix jacchus*  
+- **Purpose:** Enable robust predictive modeling, risk stratification, and hypothesis generation while minimizing animal use  
 
 **Scientific Objectives:**
-- Characterize individualized recovery dynamics and physiological responses  
-- Quantify daily risk using the **Synthetic Post-Operative Risk Index (SPORI_daily)**  
-- Examine effects of **surgical complexity**, **species physiology**, and **veterinary expertise**  
-- Generate translational insights for **early complication detection** and **perioperative optimization**  
 
-> ✅ Fully adheres to the **3Rs (Replacement, Reduction, Refinement)** framework — offering a **humane, reproducible alternative** to live animal experimentation.
+- 🔹 Characterize individualized recovery dynamics and physiologic responses post-surgery  
+- 🔹 Quantify integrated risk using the Synthetic Post-Operative Risk Index (*SPORI_daily*)  
+- 🔹 Evaluate impacts of surgical complexity, species-specific physiology, and veterinary expertise  
+- 🔹 Facilitate translational insights for early complication detection and support clinical decision-making  
 
-#### 🔹 Dataset Architecture
+> Aligned with the **3Rs principle** (Replacement, Reduction, Refinement), providing a humane, reproducible alternative to live experimentation.
 
-**1️⃣ Demographics & Baseline Physiology**
+---
 
-| Feature             | Description                                                     |
-| ------------------- | --------------------------------------------------------------- |
-| **Species**         | *50% Macaca mulatta*, *40% Macaca fascicularis*, *10% Callithrix jacchus*   |
-| **Sex**             | *50% Male* / *%50 Female*                                                   |
-| **Age (years)**     | Rhesus 3–25, Cynomolgus 2–20, Marmoset 1–8                      |
-| **Weight (kg)**     | Allometric mapping with stochastic variability                  |
-| **Baseline Vitals** | HR, Temp, PainScore, WBC, Cortisol, CRP (±5% daily variability) |
-| **Organ Function**  | Liver (ALT/AST), Kidney (Creatinine), species-adjusted ranges   |
+## 🔹 Dataset Architecture
 
-**2️⃣ Surgical & Procedural Parameters**
+### 1️⃣ Demographics and Baseline Physiology
 
-| Feature                 | Description                                            |
-| ----------------------- | ------------------------------------------------------ |
-| **Procedure Type**      | Orthopedic, Abdominal, Cardiothoracic, Neurosurgery    |
-| **Surgery Complexity**  | 3–6 ordinal scale (technical demand & invasiveness)    |
-| **Duration (min)**      | 120–170 (procedure-dependent normal distribution)      |
-<<<<<<< HEAD
-| **Anesthesia Protocol** | Multi-drug regimens modulating physiological responses |
-=======
->>>>>>> 4d36b77dab3b1a808453f7f29e7f6746122b7329
+| 📊 Feature                | 📊 Description                                                              |
+| ------------------------- | -------------------------------------------------------------------------- |
+| Species                   | 50% Macaca mulatta, 40% Macaca fascicularis, 10% Callithrix jacchus        |
+| Sex                       | 50% Male / 50% Female                                                      |
+| Age (years)               | Species-specific ranges: Rhesus 3–25, Cynomolgus 2–20, Marmoset 1–8       |
+| Weight (kg)               | Allometric mapping with stochastic inter-individual variability           |
+| Baseline vitals           | HR, Temp, PainScore, WBC, Cortisol, CRP; ±5% intra-subject variability    |
+| Baseline organ function   | Liver (ALT/AST), Kidney (Creatinine); species-specific ranges              |
 
-**3️⃣ Veterinarian Expertise**
+### 2️⃣ Surgical and Procedural Parameters
 
-| Feature                | Description                                                     |
-| ---------------------- | --------------------------------------------------------------- |
-| **VetType**            | Resident (2–4 yrs), Board-Eligible (3–6 yrs), DACLAM (7–20 yrs) |
-| **OperativeCareSkill** | 1–5 scale; influences recovery dynamics and biomarkers          |
+| 📊 Feature                  | 📊 Description                                                               |
+| --------------------------- | --------------------------------------------------------------------------- |
+| SurgicalProcedure           | Orthopedic, Abdominal, Cardiothoracic, Neurosurgery                        |
+| SurgeryComplexity           | Ordinal 3–6 scale: technical demand, invasiveness, tissue trauma            |
+| SurgeryDuration (minutes)   | Procedure-specific normal distribution, 120–170 min                         |
+| AnesthesiaProtocol          | Multi-drug perioperative regimens influencing hemodynamic, endocrine, and stress trajectories |
 
-**4️⃣ Longitudinal Physiological & Functional Measures**
-- Daily tracking (15 days): HR, Temp, PainScore, Mobility, Appetite  
-- Biomarkers: WBC, Cortisol (circadian-modulated), CRP, liver/kidney enzymes  
-- Derived Metric: `SPORI_daily` (0–100) integrating all risk components  
-- Dynamic Modulation: Driven by interventions, rare events, and cross-feature dependencies  
-- Noise Structure: Multivariate correlated Gaussian noise with autoregressive jitter  
+### 3️⃣ Veterinary Assignment and Expertise
 
-**5️⃣ Rare Adverse Events**
-- Modeled based on **species susceptibility** and **procedure complexity**  
-- Includes: Severe Infection, Organ Failure, Hemorrhage, Cardiac Arrest  
-- Occur between **days 2–5**, possibly extending beyond day 15  
-- Stored as per-subject and per-day event logs  
-- Trigger **correlated physiological perturbations** adjusted by VetType and CareSkill  
+| 📊 Feature                 | 📊 Description                                                             |
+| -------------------------- | ------------------------------------------------------------------------- |
+| VetType                    | Resident (2–4 yrs), Board-Eligible (3–6 yrs), DACLAM-certified (7–20 yrs) |
+| OperativeCareSkill          | 1–5 scale; modulates intervention efficacy on vitals, biomarkers, and functional recovery |
 
-#### 🔹 Feature Simulation Principles
-1. Autoregressive, time-dependent trajectories (decay + drift)  
-2. Nonlinear cross-feature dependencies  
-3. Circadian cortisol variation modulated by pain/stress  
-4. Veterinary skill-based recovery modulation  
-5. Multivariate stochastic noise for inter-subject variability  
-6. Species-specific stress sensitivity  
-7. Anesthesia and medication influence  
-8. Probabilistic rare-event integration  
-9. Efficient **vectorized generation (~5,000 subjects × 15 days)**  
+### 4️⃣ Premedication, Anesthesia & Post-Op Medication
 
-#### 🔹 Derived Indices — SPORI_daily
-Composite index reflecting **physiological**, **biochemical**, **functional**, and **procedural** parameters.
+> **Disclaimer:** All drug names, doses, and protocols are synthetic, randomized, and for simulation purposes only. They are **NOT intended for clinical or veterinary use**. Multi-drug premedication doses are **summed for simulation purposes only**, not reflective of real-world pharmacology.  
 
-| Component       | Weight                    |
-| --------------- | ------------------------- |
-| Heart Rate      | 20%                       |
-| Pain Score      | 20%                       |
-| WBC             | 15%                       |
-| Cortisol        | 15%                       |
-| CRP             | 10%                       |
-| Liver Function  | 5%                        |
-| Kidney Function | 5%                        |
-| Mobility        | 10%                       |
-| Appetite        | 10% *(inverse weighting)* |
+**Protocol Categories & Libraries:**
 
-- **Normalization:** Min–max per subject  
-- **Risk Levels:** Low ≤33, Moderate 34–66, High >66  
+| Category                   | Examples / Notes                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------------------ |
+| Premedication               | Ketamine_IM, Med+Ketamine_IM, Dex+Ketamine_IM, Alfaxalone_IV, Midazolam+Ketamine_IM            |
+| Induction                   | Ketamine_IV, Propofol_IV, Alfaxalone_IV, Etomidate_IV                                           |
+| Maintenance                 | Isoflurane, Sevoflurane, TIVA_Propofol, Desflurane                                             |
+| Intraoperative Analgesia    | Buprenorphine, Morphine, Fentanyl_bolus, Hydromorphone                                          |
+| Post-op Antibiotics         | Cefazolin, Enrofloxacin, Ampicillin, Cefotaxime                                                 |
+| Post-op Analgesia           | Meloxicam, Carprofen, Buprenorphine, Morphine, Local_Block                                       |
+| Reversal Agents             | Atipamezole                                                                                     |
 
-#### 🔹 Trajectory Clustering
-- KMeans clustering identifies pseudo-recovery phenotypes (early vs. late recovery)  
-- Reveals **heterogeneous risk patterns** and **latent recovery subtypes**  
-- Enables **hypothesis generation** for translational modeling  
+**Key Points:**
 
-#### 🔹 Outputs
-| Output                              | Description                 |
-| ----------------------------------- | --------------------------- |
-| `PrimatePostOpGuard_Summary.csv`    | Subject-level summary data  |
-| `PrimatePostOpGuard_TimeSeries.csv` | Day-level longitudinal data |
+- Randomized assignment per subject ensures diverse simulation of multi-drug regimens  
+- Doses vary within predefined synthetic ranges, scaled by body weight  
+- Local_Block post-op analgesia modeled with effect duration in hours  
+- Veterinary interventions dynamically modulate physiological recovery  
+
+### 5️⃣ Longitudinal Physiological and Functional Measures
+
+- 🔹 **Daily measures (15 days post-op):** HR, Temp, PainScore, Mobility, Appetite  
+- 🔹 **Biomarkers:** WBC, Cortisol (circadian & pain-modulated), CRP, liver enzymes, creatinine  
+- 🔹 **Derived metric:** *SPORI_daily* (0–100) integrating physiological, biomarker, functional, procedural, and veterinary contributions  
+- 🔹 **Dynamic modulation:** Influenced by veterinary interventions, stochastic perturbations, and inter-feature dependencies  
+- 🔹 **Noise structure:** Multivariate correlated Gaussian noise with autoregressive daily jitter for realism  
+
+### 6️⃣ Rare Adverse Events
+
+- 🔹 Probability based on procedure type, complexity, and species susceptibility  
+- 🔹 Modeled events: Severe Infection, Organ Failure, Hemorrhage, Cardiac Arrest  
+- 🔹 Timing: Randomized across post-op days 2–5, may extend beyond day 15  
+- 🔹 Stored per subject per day (*RareAdverseEventType*) and summarized (*FirstRareAdverseEventType*)  
+- 🔹 Acute events induce correlated physiological perturbations modulated by VetType and OperativeCareSkill  
+
+---
+
+## 🔹 Feature Simulation Principles
+
+- 🔹 Autoregressive, time-dependent trajectories: Stochastic drift and decay post-op  
+- 🔹 Cross-feature dependencies: Nonlinear interactions among physiology, biomarkers, and function  
+- 🔹 Cortisol circadian modulation: Species-specific profiles adjusted for pain, stress, and inflammation  
+- 🔹 Veterinary interventions: Skill-dependent dynamic modulation of recovery  
+- 🔹 Stochastic multivariate noise: Captures intra- and inter-subject variability  
+- 🔹 Species-specific stress sensitivity: Marmosets modeled with heightened cortisol reactivity  
+- 🔹 Medication and anesthesia effects: Influence trajectories dynamically (updated Phase 3.5 protocols)  
+- 🔹 Rare event integration: Probabilistic adverse events with physiologic impact  
+- 🔹 Vectorized generation: Efficient simulation of ~5000 subjects × 15+ post-op days  
+
+---
+
+## 🔹 Derived Indices
+
+### *SPORI_daily* — Synthetic Post-Operative Risk Index
+
+- 🔹 Composite indicator integrating physiological, biomarker, functional, procedural, and veterinary contributions  
+- 🔹 Dynamic weighting: Daily stochastic jitter for natural variability  
+- 🔹 Inverse weighting: Appetite inversely contributes to risk  
+
+| Component           | Approx. Weight |
+| ------------------ | -------------- |
+| Heart rate          | 20%            |
+| Pain score          | 20%            |
+| WBC                 | 15%            |
+| Cortisol            | 15%            |
+| CRP                 | 10%            |
+| Liver function      | 5%             |
+| Kidney function     | 5%             |
+| Mobility            | 10%            |
+| Appetite            | 10% (inverse)  |
+
+- 🔹 Normalization: Min-max scaling per subject  
+- 🔹 Risk stratification: Low ≤33, Moderate 34–66, High >66  
+
+---
+
+## 🔹 Trajectory Clustering
+
+- 🔹 KMeans clustering on early vs. late post-op dynamics to define pseudo-recovery phenotypes  
+- 🔹 Enables identification of heterogeneous recovery patterns and high-risk subgroups  
+- 🔹 Supports exploratory analysis and translational hypothesis generation  
+
+---
+
+## 🔹 Ethical and Scientific Rationale
+
+- 🔹 NHP selection maximizes translational relevance (physiology, immunology, behavior)  
+- 🔹 Synthetic cohort generation provides a humane, reproducible platform adhering to 3Rs principles  
+  - **Replacement:** Simulation replaces live experiments  
+  - **Reduction:** Minimizes animal numbers needed  
+  - **Refinement:** Captures complex recovery without stress or pain  
+- 🔹 Regulatory alignment: Modeled after ACLAM, AAALAC, and NIH/USDA principles to ensure ethical, fully synthetic study design  
+- 🔹 Enables mechanistic & predictive veterinary modeling with reproducibility, rigor, and ethical integrity  
+
+---
+
+## 🔹 Outputs
+
+- 🔹 **data** — Subject-level summary → `PrimatePostOpGuard_Summary.csv`  
+- 🔹 **long_df** — Day-level time series → `PrimatePostOpGuard_TimeSeries.csv`
 
 ---
 
@@ -819,15 +869,22 @@ Phase 7 delivers a **static, clinically-informed framework** to predict **post-o
 
 ---
 
-## ⚠️ Data & Model Disclaimer
+## ⚠️ Data & Model Disclaimer 
 
-All data in this repository is **fully synthetic** and generated for **research and demonstration purposes**.  
-Metrics, predictions, and risk scores are **illustrative only** and **should not be used for real veterinary decision-making**.  
+All data in this repository is **fully synthetic** for **research and demonstration purposes**.  
+Metrics, predictions, and risk scores are **illustrative only** and **should not be used for real veterinary decision-making**.
 
-> The models reflect patterns in pseudo-labels and synthetic outcomes designed to explore interpretable AI in nonhuman primate post-operative care.  
+### ⚠️ Ultra-Conservative ICU & Model Limitations 
 
-> ⚠️ **Note:** This repository reflects my current methodology and development approach. While some aspects of the code or modeling workflow could be refined, the project is released under the **MIT License**, allowing anyone to explore, adapt, or improve it for research and educational purposes.
+* **ICU Rarity:** ICU recommendations are **extremely rare**; thresholds and SHAP contributions are **heavily scaled down** for demonstration purposes.  
+* **Illustrative Risks:** Predicted risks and recommended actions are **not validated for real NHP post-op care**.  
+* **Model Bias:** Current models tend to be **biased toward infection-related features** (e.g., WBC, CRP) and other strong predictors, which may **over-emphasize certain complications** over others.  
+* **Open for Improvement:** The models are limited but the project is **MIT-licensed**, allowing anyone to **adapt, refine, or improve** the workflow and risk calculations.  
+* **Clinical Guidance Reminder:** Always rely on **veterinary expertise and standard protocols** for actual NHP post-op decision-making.   
 
+> **Takeaway:** Demonstrates **interpretability, visualization, and synthetic-data modeling** while being transparent about **limitations and ethical considerations**.
+
+---
 ### Important Notes
 
 - **Mixed-species datasets:**  

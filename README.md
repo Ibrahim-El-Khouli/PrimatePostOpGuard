@@ -950,8 +950,4 @@ All images are used with proper attribution for educational, illustrative, and n
 
 ## License
 
-<<<<<<< HEAD
 **PrimatePostOpGuard™** is released under the **MIT License** — free for academic, research, and non-commercial use.
-=======
-**PrimatePostOpGuard™** is released under the **MIT License** — free for academic, research, and non-commercial use.
->>>>>>> 4d36b77dab3b1a808453f7f29e7f6746122b7329

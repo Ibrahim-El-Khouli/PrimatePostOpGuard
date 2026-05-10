@@ -911,9 +911,8 @@ Metrics, predictions, and risk scores are **illustrative only** and **should not
 
 The author gratefully acknowledges:
 
-* **The Laboratory Nonhuman Primate, Second Edition (2018)** for providing comprehensive insights into primate biology, physiology, and welfare considerations essential to biomedical research.
-* **AAALAC International**, **IACUC**, and **USDA** for defining the ethical and oversight frameworks that inspired every phase of this project’s design.
 * The **ACLAM (American College of Laboratory Animal Medicine)** community for advancing humane, evidence-based approaches in laboratory animal medicine and refinement.
+* **AAALAC International**, **IACUC**, and **USDA** for defining the ethical and oversight frameworks that inspired every phase of this project’s design.
 * The broader **3Rs (Replacement, Reduction, Refinement)** community for its enduring commitment to ethical innovation and scientific integrity.
 * Developers of key open-source machine learning libraries—**scikit-learn**, **XGBoost**, **LightGBM**, **SHAP**, and **Plotly**—whose tools make transparent and reproducible AI research possible.
 
@@ -950,8 +949,4 @@ All images are used with proper attribution for educational, illustrative, and n
 
 ## License
 
-<<<<<<< HEAD
 **PrimatePostOpGuard™** is released under the **MIT License** — free for academic, research, and non-commercial use.
-=======
-**PrimatePostOpGuard™** is released under the **MIT License** — free for academic, research, and non-commercial use.
->>>>>>> 4d36b77dab3b1a808453f7f29e7f6746122b7329
